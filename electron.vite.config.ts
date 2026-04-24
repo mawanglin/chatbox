@@ -110,6 +110,7 @@ export default defineConfig(({ mode }) => {
   return {
     main: {
       plugins: [
+        externalizeDepsPlugin(),
         ...(isProduction
           ? [
               visualizer({
@@ -118,7 +119,7 @@ export default defineConfig(({ mode }) => {
                 title: 'Main Process Dependency Analysis',
               }),
             ]
-          : [externalizeDepsPlugin()]),
+          : []),
         process.env.SENTRY_AUTH_TOKEN
           ? sentryVitePlugin({
               authToken: process.env.SENTRY_AUTH_TOKEN,
@@ -144,7 +145,7 @@ export default defineConfig(({ mode }) => {
         sourcemap: isProduction ? 'hidden' : true,
         minify: isProduction,
         rollupOptions: {
-          external: [...Object.keys(packageJson.dependencies || {}), 'source-map-support'],
+          external: Object.keys(packageJson.dependencies || {}),
           output: {
             entryFileNames: '[name].js',
             inlineDynamicImports: true,
