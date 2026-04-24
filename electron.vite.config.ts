@@ -145,7 +145,6 @@ export default defineConfig(({ mode }) => {
         sourcemap: isProduction ? 'hidden' : true,
         minify: isProduction,
         rollupOptions: {
-          external: Object.keys(packageJson.dependencies || {}),
           output: {
             entryFileNames: '[name].js',
             inlineDynamicImports: true,
