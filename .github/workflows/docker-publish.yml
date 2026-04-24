@@ -2,9 +2,9 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "feature/docker-support" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "feature/docker-support" ]
 
 jobs:
   build_and_push:
@@ -24,4 +24,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: highkay/chatbox-web:latest
+          tags: virson/chatbox-web:latest
