@@ -47,17 +47,11 @@ export function mergeSharedOAuthProviderSettings(
   return providers?.[providerId] || {}
 }
 
-export function resolveEffectiveApiKey(
-  providerSetting: ProviderSettings,
-  _platformType: string
-): string {
+export function resolveEffectiveApiKey(providerSetting: ProviderSettings, _platformType: string): string {
   return providerSetting.apiKey || ''
 }
 
-export function isUsingOAuth(
-  _providerSetting: ProviderSettings,
-  _platformType: string
-): boolean {
+export function isUsingOAuth(_providerSetting: ProviderSettings, _platformType: string): boolean {
   return false
 }
 

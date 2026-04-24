@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(gh run:*)",
+      "Bash(where gh:*)",
+      "Bash(npm install:*)",
+      "Bash(pnpm run:*)",
+      "Bash(pnpm list:*)",
+      "Bash(npx electron-vite:*)"
+    ]
+  }
+}
