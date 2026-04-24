@@ -5,12 +5,13 @@ RUN npm install -g pnpm@10
 WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
 COPY patches ./patches/
+COPY .erb/scripts ./.erb/scripts/
 
 # ---- Dependencies ----
 FROM base AS dependencies
 # 本地构建时可取消注释以使用国内镜像加速
 # RUN pnpm config set registry https://registry.npmmirror.com/
-RUN pnpm install --frozen-lockfile --ignore-scripts
+RUN pnpm install --frozen-lockfile
 
 # ---- Build ----
 FROM dependencies AS build
