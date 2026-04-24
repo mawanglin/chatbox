@@ -10,8 +10,7 @@ COPY patches ./patches/
 FROM base AS dependencies
 # 本地构建时可取消注释以使用国内镜像加速
 # RUN pnpm config set registry https://registry.npmmirror.com/
-#RUN pnpm install --frozen-lockfile --ignore-scripts
-RUN pnpm install
+RUN pnpm install --frozen-lockfile --ignore-scripts
 
 # ---- Build ----
 FROM dependencies AS build
