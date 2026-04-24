@@ -26,7 +26,8 @@ import './definitions/mistral-ai'
 import './definitions/perplexity'
 import './definitions/volcengine'
 import './definitions/chatglm'
-import './definitions/github-copilot'
+// 官方仓库未公开此文件，暂时注释
+// import './definitions/github-copilot'
 import './definitions/bedrock'
 import {
   clearProviderRegistry,
