@@ -1,5 +1,6 @@
 # ---- Base ----
-FROM node:22-alpine AS base
+#FROM node:22-alpine AS base
+FROM node:22.22-trixie AS base
 RUN corepack enable
 WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
@@ -8,7 +9,8 @@ COPY package.json pnpm-lock.yaml ./
 FROM base AS dependencies
 # 本地构建时可取消注释以使用国内镜像加速
 # RUN pnpm config set registry https://registry.npmmirror.com/
-RUN pnpm install --frozen-lockfile --ignore-scripts
+#RUN pnpm install --frozen-lockfile --ignore-scripts
+RUN pnpm install
 
 # ---- Build ----
 FROM dependencies AS build
