@@ -144,7 +144,7 @@ export default defineConfig(({ mode }) => {
         sourcemap: isProduction ? 'hidden' : true,
         minify: isProduction,
         rollupOptions: {
-          external: Object.keys(packageJson.dependencies || {}),
+          external: [...Object.keys(packageJson.dependencies || {}), 'source-map-support'],
           output: {
             entryFileNames: '[name].js',
             inlineDynamicImports: true,
