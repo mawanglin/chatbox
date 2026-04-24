@@ -1,7 +1,7 @@
 # ---- Base ----
 #FROM node:22-alpine AS base
-FROM node:22.22-trixie AS base
-RUN corepack enable
+FROM node:22-trixie AS base
+RUN npm install -g pnpm@10
 WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
 
