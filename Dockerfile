@@ -1,17 +1,19 @@
 # ---- Base ----
 FROM node:22-alpine AS base
-RUN corepack enable
 WORKDIR /app
-COPY package.json pnpm-lock.yaml ./
+COPY package.json package-lock.json* ./
 
 # ---- Dependencies ----
 FROM base AS dependencies
-RUN pnpm install --frozen-lockfile --ignore-scripts
+# 本地构建时可取消注释以使用国内镜像加速
+# RUN npm config set registry https://registry.npmmirror.com/
+RUN npm install --ignore-scripts && \
+    npm cache clean --force
 
 # ---- Build ----
 FROM dependencies AS build
 COPY . .
-RUN pnpm run build:web
+RUN npm run build:web
 
 # ---- Production ----
 FROM nginx:alpine AS production
