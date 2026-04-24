@@ -4,6 +4,7 @@ FROM node:22-trixie AS base
 RUN npm install -g pnpm@10
 WORKDIR /app
 COPY package.json pnpm-lock.yaml ./
+COPY patches ./patches/
 
 # ---- Dependencies ----
 FROM base AS dependencies
