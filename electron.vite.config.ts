@@ -145,6 +145,8 @@ export default defineConfig(({ mode }) => {
         sourcemap: isProduction ? 'hidden' : true,
         minify: isProduction,
         rollupOptions: {
+          // Externalize all non-relative/non-absolute imports (Node built-ins + node_modules)
+          external: (id) => !id.startsWith('.') && !id.startsWith('/') && !id.startsWith('\0') && !path.isAbsolute(id),
           output: {
             entryFileNames: '[name].js',
             inlineDynamicImports: true,
